@@ -1,0 +1,10 @@
+greeting	 hi hi. hello how are you ? hey . good morning good evening good afternoon howdy
+llm-request how can i access application center? how can I access screening manager? what is customer service number? drug test reset password
+conversation-continue	 ok wow great oh is it ? oh ohh Thats great Good Really hmm lemme think hm hmmm hmmmmm
+price-inquiry	 How much is the cost ? What's the price ? What's the cost ? How much is price? How much it costs ? price cost money how much. how much?
+product-inquiry	 What is this product ? What's the product ? What does this product do ? What is name of product ? What this product is all about? Can you tell me something about this product ? What are the product features ? Tell me feature of product. 
+background-report-check I want to get my background check status?  my background report? background check background status background report? Can I get my background report?
+email-request dhirendra.negi @hireright.com dhirendra.negi@gmail.com abc@abc.com @ .com .net .org .in .co.in .co.uk .co.us .co.au .co.ca .co.nz .co.za .co.fr
+ssn-request	 1111 2222 3333 3132 3123 1234  1 2 3 4 5 6 7 8 9 0
+request-id-status 1234567 123456 12345 12345678 123456
+conversation-complete	 Thanks done that's all thats it. thats it I am done Thank you for information Thank. thanks. thank you. thanks nothing else thats it.

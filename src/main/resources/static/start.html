@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Chatbot</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+<h1>Chatbot</h1>
+<form id="chatForm">
+    <input type="text" id="userMessage" placeholder="Type your message" />
+    <button type="submit">Send</button>
+</form>
+<div id="response"></div>
+
+<script>
+    $(document).ready(function() {
+        $('#chatForm').on('submit', function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: '/chat/response',
+                type: 'POST',
+                contentType: 'text/html',
+                data: $('#userMessage').val(),
+                success: function(response) {
+                    $('#response').text(response);
+                },
+                error: function() {
+                    $('#response').text('Error occurred');
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

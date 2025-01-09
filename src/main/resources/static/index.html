@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Hireright ChatBot</title>
+    <link rel="stylesheet" href="/css/main.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body background="maxresdefault.jpg"
+      style="background-position: center; background-repeat: no-repeat; background-size: cover;">
+<noscript>
+    <h2>Oops! Javascript support is needed</h2>
+</noscript>
+<script>
+    $(document).ready(function() {
+        $('#messageForm').on('submit', function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: '/chat/response',
+                type: 'POST',
+                contentType: 'text/html',
+                data: $('#message').val(),
+                success: function(response) {
+                    $('#message').val('');
+                    $('#messageArea').append('<li class="chat-message">' +
+                        '<span class="user">You:</span>' + response + '</li>');
+                    $('#messageArea').scrollTop($('#messageArea')[0].scrollHeight);
+                },
+                error: function() {
+                    $('#response').text('Error occurred');
+                }
+            });
+        });
+    });
+</script>
+<div id="username-page">
+    <div class="username-page-container">
+        <h1 class="title" style="color:red;">Welcome to Chatbot</h1>
+        <form id="usernameForm" name="usernameForm">
+            <div class="form-group">
+                <input type="text" id="name" placeholder="Enter your Name"
+                       autocomplete="off" class="form-control" />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="accent username-submit">Create a conversation</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="chat-page" class="hidden">
+    <div class="chat-container">
+        <div class="chat-header">
+            <h2 style="color:red;">ChatBot</h2>
+        </div>
+        <div class="connecting">Connecting to Chat..</div>
+        <ul id="messageArea">
+
+        </ul>
+        <form id="messageForm" name="messageForm" nameForm="messageForm">
+            <div class="form-group">
+                <div class="input-group clearfix">
+                    <input type="text" id="message" placeholder="Please type here..."
+                           autocomplete="off" class="form-control" />
+                    <button type="submit" class="primary">Send</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script
+        src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+<script
+        src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>
